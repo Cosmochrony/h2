@@ -88,10 +88,7 @@ Thus:
 
 *Result.*
 
-\[
-\left|\|ι_q f\|^2_{L^2} - \|f\|^2_{\ell^2}\right|
-\le \frac{C}{q} N_2(\psi).
-\]
+$\left|\|ι_q f\|^2_{L^2} - \|f\|^2_{\ell^2}\right| \le \frac{C}{q} N_2(\psi).$
 
 Thus:
 
@@ -115,11 +112,7 @@ Thus:
 
 *Result.*
 
-\[
-ι_q \hat{X}_q ι_q^* \to x,
-\quad
-ι_q \hat{P}_q ι_q^* \to -i\partial_x.
-\]
+$ι_q \hat{X}_q ι_q^* \to x, \quad ι_q \hat{P}_q ι_q^* \to -i\partial_x.$
 
 Thus:
 
