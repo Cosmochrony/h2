@@ -60,9 +60,7 @@ More precisely:
 
 *Result.* The finite-difference operator admits an exact decomposition:
 
-\[
-D_q g - g'_{\mathrm{disc}} = \frac{q}{4\pi i}(T_1 - 2I + T_{-1})g.
-\]
+$D_q g - g'_{\mathrm{disc}} = \frac{q}{4\pi i}(T_1 - 2I + T_{-1})g.$
 
 Thus:
 
@@ -74,9 +72,7 @@ Thus:
 
 *Result.* For $\psi \in \mathcal{S}(\mathbb{R})$,
 
-\[
-\sum_{k\neq 0} |\hat{\psi}(\xi + kq)| \le \frac{C}{q^M}.
-\]
+$\sum_{k\neq 0} |\hat{\psi}(\xi + kq)| \le \frac{C}{q^M}.$
 
 Thus:
 
