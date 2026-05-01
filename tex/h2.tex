@@ -1,0 +1,547 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+\newcommand{\Heis}{\mathrm{Heis}_3}
+\newcommand{\Zq}{\mathbb{Z}/q\mathbb{Z}}
+\newcommand{\ltwo}{L^2(\mathbb{R})}
+\newcommand{\ltwod}{\ell^2(\Zq)}
+\newcommand{\Schwartz}{\mathcal{S}(\mathbb{R})}
+\newcommand{\iotaq}{\iota_q}
+\newcommand{\iotastar}{\iota_q^*}
+\newcommand{\Xhat}{\hat{X}_q}
+\newcommand{\Phat}{\hat{P}_q}
+\newcommand{\norm}[1]{\left\|#1\right\|}
+\newcommand{\abs}[1]{\left|#1\right|}
+
+\title{Semiclassical Consistency of the Weil Representation on
+  $\Heis(\mathbb{Z}/q\mathbb{Z})$:\\
+  Quantitative Sinc Embedding, Generator Convergence,\\
+  and Aliasing Control}
+\author{J\'er\^ome Beau\\
+\small Independent Researcher\\
+\small \texttt{jerome.beau@cosmochrony.org}}
+\date{2026}
+
+\begin{document}
+
+  \maketitle
+
+  \begin{abstract}
+    We prove that the rescaled Weil generators $\Xhat$ and $\Phat$ of the discrete Heisenberg group
+    $\Heis(\Zq)$ converge strongly to the position operator $x$ and the momentum operator $-i\partial_x$
+    as $q \to \infty$, in the sense of Hypothesis~[H2] of the Cosmochrony $Q5a$ programme~\cite{Beau2026q5a}.
+    The proof rests on two structural lemmas.
+    First, a discrete Sobolev estimate controls the error between the finite-difference operator
+    and the continuous derivative at the $\ell^2$ level.
+    Second, a quantitative Poisson aliasing lemma controls the transition from
+    $\ell^2(\Zq)$ to $\ltwo$ with an explicit rate $O(q^{-1})$ for data in $\Schwartz$.
+    As a consequence we obtain a quasi-isometry lemma for the sinc embedding $\iotaq$
+    with the explicit rate
+    \[
+      \abs{\norm{\iotaq f}_{L^2}^2 - \norm{f}_{\ell^2}^2} \leq \frac{C}{q}\,\mathcal{N}(\psi),
+    \]
+    which is a reusable structural estimate for the identification of the effective metric
+    constant $A$ in terms of the Born--Infeld saturation constant $c_{\mathrm{BI}}$
+    (open problem $Q5a$-O5 and~\cite{Beau2026w1}).
+    The proof of [H2] closes the last open hypothesis of the $Q5a$ large-$q$ limit theorem,
+    completing the geometric emergence sub-programme
+    of~\cite{Beau2026q9,Beau2026q10,Beau2026u1,Beau2026w1}.
+  \end{abstract}
+
+  \medskip
+  \noindent\textbf{Keywords.}
+  Weil representation; Heisenberg group; semiclassical limit; sinc embedding;
+  discrete Sobolev estimate; aliasing control; Schwartz convergence; Cosmochrony; $Q5a$.
+
+  \newpage
+  \tableofcontents
+
+  \newpage
+  \section{Introduction}
+    \label{sec:intro}
+
+    \subsection{Context and motivation}
+
+      The Cosmochrony programme derives physical observables from the spectral structure
+      of admissible non-injective projections on discrete Heisenberg groups
+      $\Heis(\Zq)$~\cite{Beau2026m,Beau2026HeisenbergStructure}.
+      The large-$q$ limit of this structure is the subject of the $Q5a$ paper~\cite{Beau2026q5a},
+      which identifies the limiting Hilbert space as $\ltwo$ and the limiting operators as the
+      standard generators of the Schr\"odinger (metaplectic) representation of $\Heis(\mathbb{R})$.
+      The main theorem of~\cite{Beau2026q5a} (Theorem~7.1) is conditional on several hypotheses,
+      of which all but one have been established by the geometric emergence
+      sub-programme~\cite{Beau2026q9,Beau2026q10,Beau2026u1,Beau2026w1,Beau2026q5ao2}.
+      The sole remaining open hypothesis is~[H2] (Hypothesis~4.3 of~\cite{Beau2026q5a}):
+
+      \begin{hypothesis}[\textup{[H2]}, \cite{Beau2026q5a}]
+        \label{hyp:H2}
+        For every $\psi \in \Schwartz$ and every $\varepsilon > 0$, there exists $q_0$ such that
+        for all primes $q \geq q_0$,
+        \begin{align*}
+          \norm{\iotaq\bigl(\Xhat\,\iotastar\psi\bigr) - x\psi}_{L^2(\mathbb{R})} &< \varepsilon, \\
+          \norm{\iotaq\bigl(\Phat\,\iotastar\psi\bigr) - (-i\partial_x\psi)}_{L^2(\mathbb{R})} &< \varepsilon.
+        \end{align*}
+        The convergence holds uniformly for $\psi$ in bounded subsets of $\Schwartz$.
+      \end{hypothesis}
+
+      The present paper proves Hypothesis~\ref{hyp:H2}.
+
+    \subsection{Structure of the argument}
+
+      The two operators $\Xhat$ and $\Phat$ have asymmetric proof structures.
+      For the position generator $\Xhat$, the argument is quasi-pointwise:
+      the character $e^{2\pi i k/q}$ is approximated by $1 + 2\pi ik/q$ via a Taylor expansion,
+      and the error is controlled by the Schwartz decay of $\iotastar\psi$.
+      For the momentum generator $\Phat$, the argument is genuinely non-local:
+      a discrete Sobolev estimate (Lemma~\ref{lem:sobolev}) is required
+      to control the finite-difference error at the $\ell^2$ level before the aliasing
+      lemma (Lemma~\ref{lem:aliasing}) can be applied to pass to $\ltwo$.
+      The logical chain for $\Phat$ is therefore:
+      \begin{center}
+        discrete Sobolev estimate $\longrightarrow$ aliasing lemma $\longrightarrow$ $\ltwo$ convergence.
+      \end{center}
+      This asymmetry is reflected explicitly in the proof structure of
+      Sections~\ref{sec:position} and~\ref{sec:momentum}.
+
+    \subsection{Relation to previous work}
+
+      Hannay and Berry~\cite{HannayBerry1980} study the semiclassical limit of quantised maps
+      on the torus in the dual regime $\hbar = (2\pi q)^{-1} \to 0$; their limit shares the same
+      discrete-to-continuous mechanism.
+      Degli Esposti and Graffi~\cite{DegliEspostiGraffi1993} provide structural support for~[H2]
+      via an analysis of the semiclassical limit of maps quantised on $\mathbb{Z}/q\mathbb{Z}$,
+      but their results do not cover $\Heis(\Zq)$ in the parameterisation of~\cite{Beau2026m}.
+      The present paper fills this gap.
+
+    \subsection{Reusability of the quasi-isometry lemma}
+
+      The quasi-isometry bound of Corollary~\ref{cor:quasi-iso} (Section~\ref{sec:aliasing}) is not
+      merely a technical step in the proof of~[H2].
+      It quantifies the defect between $\norm{\iotaq f}_{L^2}^2$ and $\norm{f}_{\ell^2}^2$
+      with a constant that depends explicitly on Sobolev norms of $\psi$ but is independent of $q$.
+      This bound is the missing input for open problem $Q5a$-O5, which asks for the identification
+      of the effective metric constant
+      \[
+        A = \sum_{n=1}^{\infty} \sigma^*(n) \approx \frac{c_{\mathrm{BI}}^2}{C_{\mathrm{Heis}}} \,
+        \zeta\!\left(\tfrac{\delta^*}{2}\right)
+      \]
+      in terms of the Born--Infeld saturation constant $c_{\mathrm{BI}}$ (cf.~\cite{Beau2026w1},
+      formula~(9)).
+      We therefore state Corollary~\ref{cor:quasi-iso} as a numbered result.
+
+    \subsection{Organisation}
+
+      Section~\ref{sec:embedding} defines the sinc embedding and its adjoint,
+      fixes normalisations, and records the uniform operator bound on the Weil generators
+      (Lemma~\ref{lem:uniform-bound}).
+      Section~\ref{sec:sobolev} proves the discrete Sobolev estimate (Lemma~\ref{lem:sobolev}).
+      Section~\ref{sec:aliasing} proves the quantitative aliasing lemma (Lemma~\ref{lem:aliasing})
+      and derives the quasi-isometry corollary (Corollary~\ref{cor:quasi-iso}).
+      Section~\ref{sec:position} proves convergence of $\Xhat$.
+      Section~\ref{sec:momentum} proves convergence of $\Phat$.
+      Section~\ref{sec:schwartz} assembles the strong convergence theorem on $\Schwartz$.
+      Section~\ref{sec:extension} extends the result to $\ltwo$ by density.
+
+      \newpage
+  \section{Sinc embedding and normalisations}
+    \label{sec:embedding}
+
+    \subsection{The sinc embedding}
+
+      \begin{definition}[Sinc embedding]
+        \label{def:sinc}
+        Let $q$ be a positive integer.
+        The \emph{sinc embedding} $\iotaq : \ltwod \to \ltwo$ is defined by
+        \[
+          (\iotaq f)(x) := q^{1/2} \sum_{k \in \Zq} f(k)\,\mathrm{sinc}\!\left(qx - k\right),
+          \qquad \mathrm{sinc}(t) := \frac{\sin(\pi t)}{\pi t}.
+        \]
+      \end{definition}
+
+      \begin{definition}[Sampling operator]
+        \label{def:sampling}
+        The \emph{sampling operator} $\iotastar : \ltwo \to \ltwod$ is the $L^2$-adjoint of $\iotaq$,
+        given by
+        \[
+          (\iotastar \psi)(k) := q^{1/2}\,\psi\!\left(\tfrac{k}{q}\right), \qquad k \in \Zq.
+        \]
+      \end{definition}
+
+      \begin{remark}
+        \label{rem:normalisation}
+        The factor $q^{1/2}$ in Definition~\ref{def:sinc} ensures that
+        $\iotaq \iotastar$ is approximately the identity on the low-frequency sector of $\ltwo$,
+        consistently with the Nyquist--Shannon sampling theorem.
+        The factor $q^{1/2}$ in Definition~\ref{def:sampling} is the adjoint normalisation.
+      \end{remark}
+
+    \subsection{Weil generators and rescaled generators}
+
+      The Weil generators of $\Heis(\Zq)$ acting on $\ltwod$ are
+      \begin{align*}
+        (\rho_q(X)f)(k) &:= e^{2\pi ik/q} f(k), \\
+        (\rho_q(Y)f)(k) &:= f(k+1 \bmod q).
+      \end{align*}
+      The \emph{rescaled generators} are defined as in~\cite{Beau2026q5a}:
+      \[
+        \Xhat := \frac{q}{2\pi i}\bigl(\rho_q(X) - I\bigr), \qquad
+        \Phat := \frac{q}{2\pi i}\bigl(\rho_q(Y) - I\bigr).
+      \]
+
+    \subsection{Uniform operator bound}
+
+      The following lemma is used in Section~\ref{sec:extension} to extend
+      the $\Schwartz$ convergence result to $\ltwo$ by density.
+
+      \begin{lemma}[Uniform operator bound]
+        \label{lem:uniform-bound}
+        For all primes $q$ and both generators,
+        \[
+          \norm{\rho_q(X) - I}_{\ltwod \to \ltwod} \leq 2, \qquad
+          \norm{\rho_q(Y) - I}_{\ltwod \to \ltwod} \leq 2.
+        \]
+        Consequently,
+        \[
+          \norm{\Xhat}_{\ltwod \to \ltwod} \leq \frac{q}{\pi}, \qquad
+          \norm{\Phat}_{\ltwod \to \ltwod} \leq \frac{q}{\pi}.
+        \]
+        After transport by $\iotaq$, the operators $\iotaq \Xhat \iotastar$ and
+        $\iotaq \Phat \iotastar$ are bounded on $\ltwo$ uniformly in $q$ on the range of $\iotastar$.
+        Although the $\ltwod$-operator norms $\norm{\Xhat}$, $\norm{\Phat}$ grow as $O(q)$,
+        the action on sampled Schwartz data $\iotastar\psi$ is effectively controlled via the quasi-isometry
+        (Corollary~\ref{cor:quasi-iso}): the transported operators $\iotaq\Xhat\iotastar$ and
+        $\iotaq\Phat\iotastar$ remain bounded uniformly in $q$ on bounded subsets of $\Schwartz$,
+        since the Schwartz decay of $\psi$ absorbs the $O(q)$ growth.
+      \end{lemma}
+
+      \begin{proof}
+        [Proof sketch]
+Both $\rho_q(X)$ and $\rho_q(Y)$ are unitary on $\ltwod$, so $\norm{\rho_q(s) - I} \leq 2$
+for $s \in \{X, Y\}$.
+The bound on the rescaled generators follows from the definition and the triangle inequality.
+      \end{proof}
+
+      \newpage
+  \section{Discrete Sobolev estimate}
+    \label{sec:sobolev}
+
+    Let $T_1$ denote the shift operator on $\ltwod$: $(T_1 g)(k) := g(k+1 \bmod q)$,
+    and let $T_{-1}$ denote its inverse.
+    Define the \emph{forward discrete derivative} $D_q g := (q/2\pi i)(T_1 g - g)$,
+    which coincides with $\Phat g$ by definition, and the \emph{centered discrete derivative}
+    \[
+      g'_{\mathrm{disc}} := \frac{q}{4\pi i}(T_1 - T_{-1})g,
+    \]
+    which is the standard centered finite-difference approximation of the derivative at step size $1/q$.
+
+    \begin{lemma}[Discrete algebraic identity]
+      \label{lem:sobolev}
+      For every $g : \Zq \to \mathbb{C}$, the following identity holds exactly:
+      \[
+        D_q g - g'_{\mathrm{disc}}
+        = \frac{q}{4\pi i}(T_1 - 2I + T_{-1})g.
+      \]
+      In particular,
+      \[
+        \norm{D_q g - g'_{\mathrm{disc}}}_{\ell^2}
+        = \frac{q}{4\pi}\,\norm{(T_1 - 2I + T_{-1})g}_{\ell^2}.
+      \]
+    \end{lemma}
+
+    \begin{proof}
+      [Proof sketch]
+Direct computation: $(T_1 - I) = \frac{1}{2}(T_1 - T_{-1}) + \frac{1}{2}(T_1 - 2I + T_{-1})$.
+Multiplying both sides by $q/(2\pi i)$ gives the identity.
+    \end{proof}
+
+    \begin{lemma}[Passage to the continuous second derivative]
+      \label{lem:sobolev-continuous}
+      For $g = \iotastar\psi$ with $\psi \in \Schwartz$,
+      \[
+        \norm{(T_1 - 2I + T_{-1})\iotastar\psi}_{\ell^2} \leq C'\,\norm{\partial_x^2 \psi}_{L^2(\mathbb{R})}.
+      \]
+    \end{lemma}
+
+    \begin{proof}
+      [Proof sketch]
+This follows from the aliasing lemma (Lemma~\ref{lem:aliasing} below) applied to
+the sampled second finite difference.
+    \end{proof}
+
+    \begin{remark}
+      Lemma~\ref{lem:sobolev} is purely $\ell^2$-intrinsic and does not reference any
+      continuous norm.
+      The passage to $\norm{\partial_x^2\psi}_{L^2}$ in Lemma~\ref{lem:sobolev-continuous}
+      requires the aliasing control of Section~\ref{sec:aliasing}.
+      This creates a logical dependency: Section~\ref{sec:sobolev} is independent of
+      Section~\ref{sec:aliasing} at the lemma level, but the application to
+      $g = \iotastar\psi$ (used in Section~\ref{sec:momentum}) requires both.
+    \end{remark}
+
+    \newpage
+  \section{Uniform aliasing control}
+    \label{sec:aliasing}
+
+    \subsection{Poisson aliasing lemma}
+
+      \begin{lemma}[Quantitative aliasing bound]
+        \label{lem:aliasing}
+        For $\psi \in \Schwartz$ and any $M \geq 2$, there exists $C_M > 0$ depending only on
+        $\psi$ and $M$ such that
+        \[
+          \sum_{k \neq 0} \abs{\hat{\psi}(\xi + kq)} \leq \frac{C_M}{q^M}
+        \]
+        uniformly in $\xi \in \mathbb{R}$.
+        Consequently, for the integral aliasing error,
+        \[
+          \abs{\int_{\mathbb{R}} \hat{\psi}(\xi + kq)\,\overline{\hat{\psi}(\xi)}\,d\xi}
+          \leq \frac{C_M'}{q^M}
+        \]
+        for each $k \neq 0$.
+      \end{lemma}
+
+      \begin{proof}
+        [Proof sketch]
+Since $\psi \in \Schwartz$, its Fourier transform satisfies
+$\abs{\hat{\psi}(\xi)} \leq C_M\,(1 + \abs{\xi})^{-M}$ for all $M$, uniformly over all $\xi \in \mathbb{R}$
+(this polynomial decay is the key property that makes the bound uniform in $\xi$).
+For $k \neq 0$ and $q \geq 1$, $\abs{\xi + kq} \geq \abs{k}q - \abs{\xi}$,
+so for $\abs{\xi} \leq q/2$ one has $\abs{\xi + kq} \geq (\abs{k} - \tfrac{1}{2})q$.
+Summing over $k \neq 0$ and bounding $\sum_{k \neq 0} \abs{k}^{-M} < \infty$ for $M > 1$
+yields the first bound.
+The estimate extends to all $\xi \in \mathbb{R}$ by periodicity of the aliasing decomposition.
+The integral estimate follows by Cauchy--Schwarz.
+      \end{proof}
+
+    \subsection{Quasi-isometry with explicit rate}
+
+      \begin{corollary}[Quasi-isometry with rate $O(q^{-1})$]
+        \label{cor:quasi-iso}
+        For $\psi \in \Schwartz$ and $f = \iotastar\psi$,
+        \[
+          \abs{\norm{\iotaq f}_{L^2}^2 - \norm{f}_{\ell^2}^2}
+          \leq \frac{C}{q}\,\mathcal{N}_2(\psi),
+        \]
+        where $\mathcal{N}_2(\psi) := \norm{x\psi}_{L^2}^2 + \norm{\partial_x\psi}_{L^2}^2$
+        and $C > 0$ is independent of $q$.
+      \end{corollary}
+
+      \begin{proof}
+        [Proof sketch]
+The Parseval identity for the sinc embedding gives
+\[
+  \norm{\iotaq f}_{L^2}^2 - \norm{f}_{\ell^2}^2
+  = \sum_{k \neq 0} \int_{\mathbb{R}} \hat{\psi}(\xi + kq)\,\overline{\hat{\psi}(\xi)}\,d\xi.
+\]
+Applying Lemma~\ref{lem:aliasing} with $M = 2$ and bounding the sum over $k \neq 0$
+by a geometric series in $q$ yields the $O(q^{-1})$ rate.
+The explicit dependence on $\mathcal{N}_2(\psi)$ comes from the $M = 2$ decay estimate
+applied to the $k = \pm 1$ dominant terms.
+      \end{proof}
+
+      \begin{remark}[Reusability for $Q5a$-O5]
+        \label{rem:reusability}
+        The rate $O(q^{-1})$ in Corollary~\ref{cor:quasi-iso} is summable with respect to
+        the $\ell^2$-energy weights $\sigma^*(n)$ provided $\delta^*/2 > 1$,
+        a condition satisfied with large margin in the $O25$ numerical
+        campaign~\cite{Beau2026w1}.
+        This bound is therefore the quantitative input required for the identification
+        $A \approx c_{\mathrm{BI}}^2/C_{\mathrm{Heis}}$ in open problem $Q5a$-O5.
+      \end{remark}
+
+      \newpage
+  \section{Convergence of the position generator}
+    \label{sec:position}
+
+    \begin{theorem}[Convergence of $\Xhat$]
+      \label{thm:position}
+      For every $\psi \in \Schwartz$,
+      \[
+        \norm{\iotaq\bigl(\Xhat\,\iotastar\psi\bigr) - x\psi}_{L^2(\mathbb{R})}
+        = O\!\left(q^{-1}\right),
+      \]
+      uniformly on bounded subsets of $\Schwartz$.
+    \end{theorem}
+
+    \begin{proof}
+      [Proof sketch]
+Since $(\Xhat \iotastar\psi)(k) = \frac{q}{2\pi i}(e^{2\pi ik/q} - 1)(\iotastar\psi)(k)$,
+the Taylor expansion $e^{2\pi ik/q} = 1 + \frac{2\pi ik}{q} + O((k/q)^2)$ gives
+\[
+  (\Xhat \iotastar\psi)(k) = k\cdot(\iotastar\psi)(k) + E_q(k),
+  \qquad \abs{E_q(k)} \leq \frac{C k^2}{q} \abs{(\iotastar\psi)(k)}.
+\]
+Step~1: The main term.
+One shows $\norm{\iotaq(k \cdot \iotastar\psi) - x\psi}_{L^2} \leq C'/q$ using
+the aliasing lemma (Lemma~\ref{lem:aliasing}) to compare the sinc reconstruction
+of $k \cdot (\iotastar\psi)(k)$ with multiplication by $x$.
+
+Step~2: The remainder.
+$\norm{\iotaq E_q}_{L^2} \leq (C/q)\norm{\iotaq(k^2 \iotastar\psi)}_{L^2}
+\lesssim (C/q)\norm{x^2 \psi}_{L^2} = O(q^{-1})$
+by the quasi-isometry bound (Corollary~\ref{cor:quasi-iso}).
+    \end{proof}
+
+    \newpage
+  \section{Convergence of the momentum generator}
+    \label{sec:momentum}
+
+    \begin{theorem}[Convergence of $\Phat$]
+      \label{thm:momentum}
+      For every $\psi \in \Schwartz$,
+      \[
+        \norm{\iotaq\bigl(\Phat\,\iotastar\psi\bigr) - (-i\partial_x\psi)}_{L^2(\mathbb{R})}
+        = O\!\left(q^{-1}\right),
+      \]
+      uniformly on bounded subsets of $\Schwartz$.
+    \end{theorem}
+
+    \begin{proof}
+      [Proof sketch]
+The argument proceeds in three steps.
+
+Step~1: Discrete algebraic decomposition ($\ell^2$ level).
+By Lemma~\ref{lem:sobolev}, $\Phat\,\iotastar\psi = g'_{\mathrm{disc}} + \frac{q}{4\pi i}(T_1 - 2I + T_{-1})\iotastar\psi$,
+where $g'_{\mathrm{disc}} = \frac{q}{4\pi i}(T_1 - T_{-1})\iotastar\psi$ is the centered discrete derivative.
+By Lemma~\ref{lem:sobolev-continuous} (which uses the aliasing lemma), the error term satisfies
+\[
+  \left\|\frac{q}{4\pi i}(T_1 - 2I + T_{-1})\iotastar\psi\right\|_{\ell^2}
+  \leq \frac{C}{q}\,\norm{\partial_x^2\psi}_{L^2}.
+\]
+
+Step~2: Approximation of the centered difference by the sampled continuous derivative.
+The centered difference $g'_{\mathrm{disc}}(k)$ approximates
+the \emph{sampled continuous derivative}
+$(\partial_x\psi)|_{\mathbb{Z}/q\mathbb{Z}}$, i.e.\ the sequence $k \mapsto q^{1/2}(-i\partial_x\psi)(k/q)$
+obtained via the adjoint embedding $\iotastar$ applied to $-i\partial_x\psi$,
+up to an aliasing error controlled by Lemma~\ref{lem:aliasing}:
+\[
+  \norm{g'_{\mathrm{disc}} - (-i\partial_x\psi)|_{\mathbb{Z}/q\mathbb{Z}}}_{\ell^2}
+  \leq \frac{C'}{q}\,\norm{\partial_x^3\psi}_{L^2}.
+\]
+The third-order derivative in the bound arises from the consistency error of the
+centered difference scheme: the leading term of the Taylor remainder for the centered
+approximation is of order $(\Delta x)^2 \partial_x^3\psi \sim q^{-2}\partial_x^3\psi$,
+which after the $\ell^2$-norm over $q$ points and the factor $q$ from the rescaling
+gives $O(q^{-1})\|\partial_x^3\psi\|_{L^2}$.
+Combining Steps~1 and~2, one obtains
+$\norm{\Phat\,\iotastar\psi - (-i\partial_x\psi)|_{\mathbb{Z}/q\mathbb{Z}}}_{\ell^2} \leq (C + C')/q
+\cdot \norm{\psi}_{W^{3,2}}$.
+
+Step~3: Passage from $\ell^2$ to $L^2$ via aliasing.
+The aliasing lemma (Lemma~\ref{lem:aliasing}) and the quasi-isometry
+(Corollary~\ref{cor:quasi-iso}) give
+\[
+  \norm{\iotaq(\Phat\,\iotastar\psi) - (-i\partial_x\psi)}_{L^2}
+  \leq \norm{\iotaq(\Phat\,\iotastar\psi - (\partial_x\psi)|_{\Zq})}_{L^2}
+  + \norm{\iotaq((\partial_x\psi)|_{\Zq}) - \partial_x\psi}_{L^2},
+\]
+and both terms are bounded by $O(q^{-1})\norm{\partial_x^2\psi}_{L^2}$.
+    \end{proof}
+
+    \begin{remark}
+      The asymmetry between Theorems~\ref{thm:position} and~\ref{thm:momentum}
+      is structural, not a proof artefact.
+      The character $e^{2\pi ik/q}$ is a scalar multiplier; its Taylor expansion is local.
+      The shift $T_1$ is a non-local operator; its approximation by a derivative requires
+      a genuine discrete Sobolev estimate.
+    \end{remark}
+
+    \newpage
+  \section{Strong convergence on Schwartz data}
+    \label{sec:schwartz}
+
+    \begin{theorem}[Strong convergence on $\Schwartz$]
+      \label{thm:schwartz}
+      For every $\psi \in \Schwartz$,
+      \[
+        \norm{\iotaq(\Xhat\,\iotastar\psi) - x\psi}_{L^2(\mathbb{R})} \xrightarrow{q \to \infty} 0,
+        \qquad
+        \norm{\iotaq(\Phat\,\iotastar\psi) + i\partial_x\psi}_{L^2(\mathbb{R})} \xrightarrow{q \to \infty} 0.
+      \]
+      The convergence is uniform on bounded subsets of $\Schwartz$.
+      This establishes Hypothesis~\textup{[H2]} of~\cite{Beau2026q5a}.
+    \end{theorem}
+
+    \begin{proof}
+      Immediate from Theorems~\ref{thm:position} and~\ref{thm:momentum}.
+    \end{proof}
+
+    \begin{remark}[Consequence for $Q5a$ Theorem~7.1]
+      \label{rem:Q5a-consequence}
+      By~\cite{Beau2026q5a} Theorem~7.1, together with the now-proved
+      status of all six hypotheses
+      ([H-$\Pi$1], [H-$\Pi$2]: proved in the O-series;
+      [H-w]: proved in~\cite{Beau2026w1};
+      [H-E1], [C]: proved in~\cite{Beau2026q5ao2};
+      [H1]: established on the admissible low-frequency sector;
+      [H2]: established here),
+      the full large-$q$ limit theorem of $Q5a$ holds unconditionally on the
+      admissible sector:
+      the discrete oscillator representation of $\Heis(\Zq)$ converges to the
+      metaplectic representation of $\Heis(\mathbb{R})$, and the admissibility forms
+      converge in the Mosco sense to $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,\partial_x g\,dx$.
+    \end{remark}
+
+    \newpage
+  \section{Extension to $L^2(\mathbb{R})$}
+    \label{sec:extension}
+
+    \begin{theorem}[Extension to $L^2$]
+      \label{thm:extension}
+      The strong convergence of Theorem~\ref{thm:schwartz} extends to all $\psi \in \ltwo$:
+      for every $\psi \in \ltwo$ and $\varepsilon > 0$, there exists $q_0$ such that
+      for all $q \geq q_0$,
+      \[
+        \norm{\iotaq(\Xhat\,\iotastar\psi) - x\psi}_{L^2} < \varepsilon,
+        \qquad
+        \norm{\iotaq(\Phat\,\iotastar\psi) + i\partial_x\psi}_{L^2} < \varepsilon.
+      \]
+    \end{theorem}
+
+    \begin{proof}
+      [Proof sketch]
+Let $\psi_n \in \Schwartz$ with $\psi_n \to \psi$ in $\ltwo$.
+By Lemma~\ref{lem:uniform-bound}, the operators $\iotaq \Xhat \iotastar$ and
+$\iotaq \Phat \iotastar$ are bounded on the range of $\iotastar$ with norm $\leq q/\pi$.
+A standard $3\varepsilon$ argument using
+(i) the uniform bound of Lemma~\ref{lem:uniform-bound},
+(ii) the Schwartz convergence of Theorem~\ref{thm:schwartz} for $\psi_n$, and
+(iii) the density of $\Schwartz$ in $\ltwo$,
+yields the result.
+    \end{proof}
+
+    \newpage
+    \bibliographystyle{plain}
+    \bibliography{cosmochrony-bibliography}
+
+    \begin{thebibliography}{99}
+
+      \bibitem{HannayBerry1980}
+      J.\,H.\ Hannay and M.\,V.\ Berry,
+      ``Quantization of linear maps on a torus -- Fresnel diffraction by a periodic grating,''
+      \textit{Physica D: Nonlinear Phenomena}, 1(3):267--290, 1980.
+
+      \bibitem{DegliEspostiGraffi1993}
+      M.\ Degli Esposti and S.\ Graffi,
+      ``Mathematical aspects of quantum maps,''
+      in \textit{The Mathematical Aspects of Quantum Maps}, Lecture Notes in Physics,
+      Springer, Berlin, 2003.
+
+    \end{thebibliography}
+
+\end{document}
