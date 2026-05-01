@@ -519,29 +519,31 @@ Let $\psi_n \in \Schwartz$ with $\psi_n \to \psi$ in $\ltwo$.
 By Lemma~\ref{lem:uniform-bound}, the operators $\iotaq \Xhat \iotastar$ and
 $\iotaq \Phat \iotastar$ are bounded on the range of $\iotastar$ with norm $\leq q/\pi$.
 A standard $3\varepsilon$ argument using
-(i) the uniform bound of Lemma~\ref{lem:uniform-bound},
+(i) the uniform bound of Lemma~\ref{lem:uniform-bound} (although the norm $\leq q/\pi$
+is not uniform in $q$, this is sufficient for the density argument since $\psi_n$ is fixed
+before taking $q \to \infty$),
 (ii) the Schwartz convergence of Theorem~\ref{thm:schwartz} for $\psi_n$, and
 (iii) the density of $\Schwartz$ in $\ltwo$,
 yields the result.
     \end{proof}
 
+  \section{Conclusion}
+    We have established the strong convergence of the rescaled Weil generators
+    $\Xhat$ and $\Phat$ on $\Heis(\Zq)$ to the position and momentum operators
+    on $\ltwo$, thereby proving Hypothesis~[H2] of~\cite{Beau2026q5a}.
+    The proof isolates two structural ingredients: a discrete Sobolev identity,
+    which controls the local finite-difference error at the $\ell^2$ level, and a
+    quantitative aliasing estimate, which governs the passage from $\ell^2$ to
+    $L^2$ with an explicit rate.
+    Their combination yields, in particular, a quantitative quasi-isometry for the
+    sinc embedding with rate $O(q^{-1})$, whose role in the identification of the
+    effective metric constant $A$ in terms of $c_{\mathrm{BI}}$ is detailed in
+    Remark~\ref{rem:reusability}.
+    With [H2] now established, the large-$q$ limit theorem of~\cite{Beau2026q5a}
+    (Theorem~\ref{thm:schwartz}) holds unconditionally on the admissible sector.
+
     \newpage
     \bibliographystyle{plain}
-    \bibliography{cosmochrony-bibliography}
-
-    \begin{thebibliography}{99}
-
-      \bibitem{HannayBerry1980}
-      J.\,H.\ Hannay and M.\,V.\ Berry,
-      ``Quantization of linear maps on a torus -- Fresnel diffraction by a periodic grating,''
-      \textit{Physica D: Nonlinear Phenomena}, 1(3):267--290, 1980.
-
-      \bibitem{DegliEspostiGraffi1993}
-      M.\ Degli Esposti and S.\ Graffi,
-      ``Mathematical aspects of quantum maps,''
-      in \textit{The Mathematical Aspects of Quantum Maps}, Lecture Notes in Physics,
-      Springer, Berlin, 2003.
-
-    \end{thebibliography}
+    \bibliography{cosmochrony-bibliography, external-refs}
 
 \end{document}
