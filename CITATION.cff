@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you cite this work, please use the metadata from this file."
+title: "Semiclassical Consistency of the Weil Representation on (Z/qZ): Quantitative Sinc Embedding, Generator Convergence, and Aliasing Control"
+type: software
+authors:
+  - family-names: "Beau"
+    given-names: "Jérôme"
+repository-code: "https://github.com/Cosmochrony/h2"
+url: "https://cosmochrony.org/science/emergent-geometry/h2/"
+doi: "10.5281/zenodo.19962051"
+license: "CC-BY-4.0"
+preferred-citation:
+  type: article
+  title: "Semiclassical Consistency of the Weil Representation on (Z/qZ): Quantitative Sinc Embedding, Generator Convergence, and Aliasing Control"
+  authors:
+    - family-names: "Beau"
+      given-names: "Jérôme"
+  year: 2026
+  doi: "10.5281/zenodo.19962051"
+  url: "https://doi.org/10.5281/zenodo.19962051"
