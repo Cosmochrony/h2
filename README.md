@@ -1,6 +1,6 @@
 This repository contains the source of the **H2 Cosmochrony paper**  
-[*Semiclassical Consistency of the Weil Representation on Heis₃(ℤ/qℤ):
-Quantitative Sinc Embedding, Generator Convergence, and Aliasing Control*](out/h2.pdf).
+*Semiclassical Consistency of the Weil Representation on Heis₃(ℤ/qℤ):
+Quantitative Sinc Embedding, Generator Convergence, and Aliasing Control*.
 
 This work addresses the **[H2] hypothesis** of the Q5a programme:
 
