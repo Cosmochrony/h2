@@ -57,9 +57,12 @@
     which is a reusable structural estimate for the identification of the effective metric
     constant $A$ in terms of the Born--Infeld saturation constant $c_{\mathrm{BI}}$
     (open problem $Q5a$-O5 and~\cite{Beau2026w1}).
-    The proof of [H2] closes the last open hypothesis of the $Q5a$ large-$q$ limit theorem,
-    completing the geometric emergence sub-programme
+    The proof of [H2] closes the generator-convergence hypothesis of the $Q5a$ large-$q$ limit
+    theorem, complementing the geometric emergence sub-programme
     of~\cite{Beau2026q9,Beau2026q10,Beau2026u1,Beau2026w1}.
+    The hypotheses [H-E1] and [C] are not closed: the Q5a-O2 Fourier
+    analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and supersedes [C],
+    the published admissibility form having zero-form Mosco limit on the canonical filtration.
   \end{abstract}
 
   \medskip
@@ -82,10 +85,14 @@
       The large-$q$ limit of this structure is the subject of the $Q5a$ paper~\cite{Beau2026q5a},
       which identifies the limiting Hilbert space as $\ltwo$ and the limiting operators as the
       standard generators of the Schr\"odinger (metaplectic) representation of $\Heis(\mathbb{R})$.
-      The main theorem of~\cite{Beau2026q5a} (Theorem~7.1) is conditional on several hypotheses,
-      of which all but one have been established by the geometric emergence
-      sub-programme~\cite{Beau2026q9,Beau2026q10,Beau2026u1,Beau2026w1,Beau2026q5ao2}.
-      The sole remaining open hypothesis is~[H2] (Hypothesis~4.3 of~\cite{Beau2026q5a}):
+      The main theorem of~\cite{Beau2026q5a} (Theorem~7.1) is conditional on several hypotheses.
+      The geometric emergence sub-programme establishes
+      [H-w]~\cite{Beau2026w1} and the universality inputs~\cite{Beau2026q9,Beau2026q10,Beau2026u1};
+      the Q5a-O2 Fourier analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and
+      supersedes [C], the published admissibility form having zero-form Mosco limit on the
+      canonical Fourier filtration.
+      The present paper addresses the generator-convergence hypothesis~[H2]
+      (Hypothesis~4.3 of~\cite{Beau2026q5a}):
 
       \begin{hypothesis}[\textup{[H2]}, \cite{Beau2026q5a}]
         \label{hyp:H2}
@@ -483,18 +490,23 @@ and both terms are bounded by $O(q^{-1})\norm{\partial_x^2\psi}_{L^2}$.
 
     \begin{remark}[Consequence for $Q5a$ Theorem~7.1]
       \label{rem:Q5a-consequence}
-      By~\cite{Beau2026q5a} Theorem~7.1, together with the now-proved
-      status of all six hypotheses
-      ([H-$\Pi$1], [H-$\Pi$2]: proved in the O-series;
-      [H-w]: proved in~\cite{Beau2026w1};
-      [H-E1], [C]: proved in~\cite{Beau2026q5ao2};
-      [H1]: established on the admissible low-frequency sector;
-      [H2]: established here),
-      the full large-$q$ limit theorem of $Q5a$ holds unconditionally on the
-      admissible sector:
+      The hypotheses of~\cite{Beau2026q5a} Theorem~7.1 have mixed status:
+      [H-$\Pi$1], [H-$\Pi$2] are proved in the O-series;
+      [H-w] is proved in~\cite{Beau2026w1};
+      [H1] is established on the admissible low-frequency sector;
+      [H2] is established here.
+      The hypotheses [H-E1] and [C] are not established: the Q5a-O2 Fourier
+      analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and supersedes [C],
+      the published admissibility form having zero-form Mosco limit on the canonical
+      Fourier filtration.
+      The representation-convergence part of the $Q5a$ limit therefore holds on the
+      admissible sector under [H1]--[H2]:
       the discrete oscillator representation of $\Heis(\Zq)$ converges to the
-      metaplectic representation of $\Heis(\mathbb{R})$, and the admissibility forms
-      converge in the Mosco sense to $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,\partial_x g\,dx$.
+      metaplectic representation of $\Heis(\mathbb{R})$.
+      The form-convergence conclusion of Theorem~7.1 does not hold as stated: the published
+      admissibility forms have zero-form Mosco limit, and the existence of a normalisation
+      with non-trivial limit form $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,
+      \partial_x g\,dx$ is an open problem.
     \end{remark}
 
     \newpage
@@ -539,8 +551,10 @@ yields the result.
     sinc embedding with rate $O(q^{-1})$, whose role in the identification of the
     effective metric constant $A$ in terms of $c_{\mathrm{BI}}$ is detailed in
     Remark~\ref{rem:reusability}.
-    With [H2] now established, the large-$q$ limit theorem of~\cite{Beau2026q5a}
-    (Theorem~\ref{thm:schwartz}) holds unconditionally on the admissible sector.
+    With [H2] established, the representation-convergence part of the large-$q$ limit
+    of~\cite{Beau2026q5a} (Theorem~\ref{thm:schwartz}) holds on the admissible sector;
+    the form-convergence part remains open, the published admissibility forms having
+    zero-form Mosco limit (Q5a-O2~\cite{Beau2026q5ao2}, Remark~\ref{rem:Q5a-consequence}).
 
     \newpage
     \bibliographystyle{plain}

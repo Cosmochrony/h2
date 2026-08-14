@@ -24,7 +24,11 @@ The main result is:
 > The transported operators $ι_q \hat{X}_q ι_q^*$ and $ι_q \hat{P}_q ι_q^*$
 > converge strongly to $x$ and $-i\partial_x$ in $L^2(\mathbb{R})$.
 
-Thus H2 closes the last open hypothesis of Q5a.
+Thus H2 closes the generator-convergence hypothesis of Q5a. The hypotheses [H-E1] and [C]
+are not closed: the Q5a-O2 Fourier analysis rules out [H-E1] at the $q^{-1}$ scale and
+supersedes [C], the published admissibility form having zero-form Mosco limit; the
+representation-convergence part of the Q5a limit holds on the admissible sector, while
+the form-convergence part remains open.
 
 ## Context
 
