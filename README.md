@@ -2,16 +2,14 @@ This repository contains the source of the **H2 Cosmochrony paper**
 *Semiclassical Consistency of the Weil Representation on Heis₃(ℤ/qℤ):
 Quantitative Sinc Embedding, Generator Convergence, and Aliasing Control*.
 
-This work addresses the **[H2] hypothesis** of the Q5a programme:
+This work proves the statement formulated as **hypothesis [H2]** in version 2.0 of the Q5a paper:
 
 > Do the rescaled Weil generators on ℓ²(ℤ/qℤ) converge, in the large-$q$ limit,
 > to the position and momentum operators on $L^2(\mathbb{R})$?
 
+The current version of Q5a does not use that framework, and this paper discharges no hypothesis of it.
+
 ## Quick Summary
-
-H2 establishes the **operator-level consistency** of the discrete-to-continuum limit.
-
-More precisely:
 
 - the discrete generators $\hat{X}_q$, $\hat{P}_q$ are analysed explicitly
 - convergence is formulated as **strong operator convergence**
@@ -24,30 +22,24 @@ The main result is:
 > The transported operators $ι_q \hat{X}_q ι_q^*$ and $ι_q \hat{P}_q ι_q^*$
 > converge strongly to $x$ and $-i\partial_x$ in $L^2(\mathbb{R})$.
 
-Thus H2 closes the generator-convergence hypothesis of Q5a. The hypotheses [H-E1] and [C]
-are not closed: the Q5a-O2 Fourier analysis rules out [H-E1] at the $q^{-1}$ scale and
-supersedes [C], the published admissibility form having zero-form Mosco limit; the
-representation-convergence part of the Q5a limit holds on the admissible sector, while
-the form-convergence part remains open.
+## Context and Status
 
-## Context
+Q5a version 2.0 (Zenodo record 19897055) formulated a large-$q$ limit theorem (its Theorem 7.1)
+under the hypotheses [H-Π1], [H-Π2], [H2], [H-w] and [H-E1], with a spectral tightness statement [C]
+for its form-convergence part. [H2] is its Hypothesis 4.3.
 
-**Q5a** establishes the continuum limit framework:
+This paper proves the statement of [H2] and nothing else in that list:
 
-- fibre structure recast as Dirichlet forms
-- convergence formulated as Mosco convergence
-- reduction to spectral tightness
+- [H-w] is open: W1 establishes no proof of it;
+- the Q5a-O2 Fourier analysis rules out [H-E1] at the $q^{-1}$ scale and supersedes [C];
+- the status of [H-Π1] and [H-Π2] is not examined here.
 
-However:
-
-- convergence of the underlying operators remained conditional
-- the identification of the limit generators was not yet justified
-
-This defines [H2].
+The current Q5a proves that the canonical filtration is a Fourier window on which the published
+admissibility form has zero-form Mosco limit (Theorems 3.1 and 5.1), and that under its depth and
+weight hypotheses no common scalar normalisation yields a toric differential limit (Theorem 6.1).
+The generator convergence proved here therefore supplies no spatial limit operator.
 
 ## Core Result
-
-The paper proves:
 
 > The Weil generators on $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ converge,
 > after rescaling and embedding, to the Schrödinger generators on $L^2(\mathbb{R})$.
@@ -56,7 +48,7 @@ More precisely:
 
 - $\hat{X}_q \to x$ (multiplication operator)
 - $\hat{P}_q \to -i\partial_x$ (derivative operator)
-- convergence holds strongly on $\mathcal{S}(\mathbb{R})$ and extends to $L^2$
+- convergence holds strongly on $\mathcal{S}(\mathbb{R})$, uniformly on bounded subsets, and extends to $L^2$
 
 ## Main Structural Results
 
@@ -93,8 +85,9 @@ $\left|\|ι_q f\|^2_{L^2} - \|f\|^2_{\ell^2}\right| \le \frac{C}{q} N_2(\psi).$
 Thus:
 
 - the embedding is asymptotically isometric
-- norm defects are summable
-- this estimate is reusable (Q5a-O5)
+- the estimate is reusable: an identification of an effective metric constant $A$ in terms of the
+  Born–Infeld constant would use it as one ingredient, together with a supplied power-law profile
+  that is not established (W1, Section 4.2)
 
 ### 4. Asymmetric convergence mechanism
 
@@ -114,105 +107,26 @@ Thus:
 
 $ι_q \hat{X}_q ι_q^* \to x, \quad ι_q \hat{P}_q ι_q^* \to -i\partial_x.$
 
-Thus:
-
-- the discrete representation converges to the Schrödinger representation
-- the semiclassical limit is established at operator level
-
-## Foundational Chain from the Substrate
-
-The derivation is fully internal:
-
-admissibility structure  
-$\to$ spectral profiles  
-$\to$ tightness (Q5a)  
-$\to$ valid embedding  
-$\to$ operator convergence (H2)
-
-No continuum assumption is introduced externally.
-
-## Mathematical Role of H2
-
-H2 provides the missing analytical closure of Q5a:
-
-- validates the operator limit
-- justifies the identification of generators
-- ensures consistency of the continuum representation
-- provides quantitative control of embedding
-
 ## Epistemic Structure of the Paper
 
-### Established input
+### Input
 
-- spectral tightness framework (Q5a)
-- admissible structure (O-series)
-- numerical scaling behaviour (O25)
+- the Weil representation of $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$ and the sinc embedding
+- the rescaled generators of Q5a version 2.0 (its Definition 4.1)
 
 ### New results
 
 - discrete Sobolev identity (exact)
 - quantitative aliasing lemma
 - quasi-isometry with explicit rate
-- operator convergence proof
+- strong convergence of the rescaled generators
 
-### Closed problem
+### Not established here
 
-- Hypothesis [H2] is fully resolved
-
-### Remaining open problems
-
-- identification of the limiting Dirichlet form
-- extraction of effective geometry (Q5b)
-- identification of metric constant $A$ (Q5a-O5)
-
-## Interpretation of the Result
-
-The conceptual shift is:
-
-- previous view: operator convergence assumed or heuristic
-- H2: operator convergence is **derived and controlled**
-
-Thus:
-
-- the continuum limit is not only geometric
-- it is also dynamically consistent
-- the Schrödinger structure emerges from admissibility
-
-## Structural Role of H2
-
-H2 completes the Q5a programme:
-
-- **O-series**: finite-$q$ structure
-- **Q5a**: continuum reduction
-- **H2**: operator convergence
-- **Q5b (future)**: geometry extraction
-
-Thus:
-
-- existence of the limit is established
-- operator structure is validated
-- only geometric interpretation remains
-
-## What H2 Adds
-
-- exact discrete Sobolev decomposition
-- quantitative aliasing control
-- asymptotic quasi-isometry
-- strong convergence of generators
-- closure of Q5a hypothesis chain
-
-## Outcome
-
-The continuum limit is now:
-
-- analytically complete
-- operator-consistent
-- quantitatively controlled
-- structurally derived
-
-The remaining task is no longer convergence.
-
-It is **geometric interpretation**.
+- any hypothesis of the current Q5a
+- [H-w], [H-E1], [C]
+- a non-trivial limiting Dirichlet form or spatial limit operator
+- the identification of a metric constant $A$
 
 ## Repository Structure
 

@@ -3,6 +3,11 @@
 \usepackage{amsmath, amsthm, amssymb}
 \usepackage{mathtools}
 \usepackage{hyperref}
+\hypersetup{
+  pdftitle={Semiclassical Consistency of the Weil Representation on Heis3(Z/qZ): Quantitative Sinc Embedding, Generator Convergence, and Aliasing Control},
+  pdfauthor={Jérôme Beau},
+  pdfsubject={Cosmochrony emergent-geometry programme, paper H2, version 1.1},
+}
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{doi:#1}}
 
 \usepackage[T1]{fontenc}
@@ -43,7 +48,9 @@
   \begin{abstract}
     We prove that the rescaled Weil generators $\Xhat$ and $\Phat$ of the discrete Heisenberg group
     $\Heis(\Zq)$ converge strongly to the position operator $x$ and the momentum operator $-i\partial_x$
-    as $q \to \infty$, in the sense of Hypothesis~[H2] of the Cosmochrony $Q5a$ programme~\cite{Beau2026q5a}.
+    as $q \to \infty$.
+    This is the statement formulated as hypothesis~[H2] in version~2.0 of the Cosmochrony paper
+    $Q5a$~\cite{Beau2026q5a}; the current version of $Q5a$ does not use that framework.
     The proof rests on two structural lemmas.
     First, a discrete Sobolev estimate controls the error between the finite-difference operator
     and the continuous derivative at the $\ell^2$ level.
@@ -54,15 +61,16 @@
     \[
       \abs{\norm{\iotaq f}_{L^2}^2 - \norm{f}_{\ell^2}^2} \leq \frac{C}{q}\,\mathcal{N}(\psi),
     \]
-    which is a reusable structural estimate for the identification of the effective metric
-    constant $A$ in terms of the Born--Infeld saturation constant $c_{\mathrm{BI}}$
-    (open problem $Q5a$-O5 and~\cite{Beau2026w1}).
-    The proof of [H2] closes the generator-convergence hypothesis of the $Q5a$ large-$q$ limit
-    theorem, complementing the geometric emergence sub-programme
-    of~\cite{Beau2026q9,Beau2026q10,Beau2026u1,Beau2026w1}.
-    The hypotheses [H-E1] and [C] are not closed: the Q5a-O2 Fourier
-    analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and supersedes [C],
-    the published admissibility form having zero-form Mosco limit on the canonical filtration.
+    which is a reusable structural estimate; an identification of an effective metric constant
+    $A$ in terms of the Born--Infeld saturation constant $c_{\mathrm{BI}}$ would use it together
+    with inputs that are not established~\cite{Beau2026w1}.
+    In the framework of $Q5a$ version~2.0, [H2] is the generator-convergence hypothesis of its
+    large-$q$ limit theorem.
+    The other hypotheses of that theorem are not discharged: the common weight hypothesis [H-w]
+    is open~\cite{Beau2026w1}, and the Q5a-O2 Fourier analysis~\cite{Beau2026q5ao2} rules out
+    [H-E1] at the $q^{-1}$ scale and supersedes [C].
+    The current $Q5a$ proves that the published admissibility form has zero-form Mosco limit on
+    the canonical filtration, so the present result supplies no spatial limit operator.
   \end{abstract}
 
   \medskip
@@ -82,19 +90,22 @@
       The Cosmochrony programme derives physical observables from the spectral structure
       of admissible non-injective projections on discrete Heisenberg groups
       $\Heis(\Zq)$~\cite{Beau2026m,Beau2026HeisenbergStructure}.
-      The large-$q$ limit of this structure is the subject of the $Q5a$ paper~\cite{Beau2026q5a},
-      which identifies the limiting Hilbert space as $\ltwo$ and the limiting operators as the
-      standard generators of the Schr\"odinger (metaplectic) representation of $\Heis(\mathbb{R})$.
-      The main theorem of~\cite{Beau2026q5a} (Theorem~7.1) is conditional on several hypotheses.
-      The geometric emergence sub-programme establishes
-      [H-w]~\cite{Beau2026w1} and the universality inputs~\cite{Beau2026q9,Beau2026q10,Beau2026u1};
-      the Q5a-O2 Fourier analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and
-      supersedes [C], the published admissibility form having zero-form Mosco limit on the
-      canonical Fourier filtration.
-      The present paper addresses the generator-convergence hypothesis~[H2]
-      (Hypothesis~4.3 of~\cite{Beau2026q5a}):
+      Version~2.0 of the $Q5a$ paper~\cite{Beau2026q5a} (Zenodo record 19897055) formulated a
+      large-$q$ limit theorem for this structure (Theorem~7.1 there), identifying the limiting
+      Hilbert space as $\ltwo$ and the limiting operators as the standard generators of the
+      Schr\"odinger (metaplectic) representation of $\Heis(\mathbb{R})$, under the hypotheses
+      [H-$\Pi$1], [H-$\Pi$2], [H2], [H-w] and [H-E1], together with a spectral tightness
+      statement [C] for its form-convergence part.
+      That framework is not the one of the current $Q5a$, which proves that the canonical
+      filtration is a Fourier window on which the published admissibility form has zero-form
+      Mosco limit (\cite{Beau2026q5a}, Theorems~3.1 and~5.1).
+      Of the hypotheses of the version-2.0 theorem, the common weight hypothesis [H-w] is open,
+      W1~\cite{Beau2026w1} establishing no proof of it, and the Q5a-O2 Fourier
+      analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and supersedes [C].
+      The present paper addresses one hypothesis of that framework, the generator-convergence
+      hypothesis~[H2] (Hypothesis~4.3 of $Q5a$ version~2.0):
 
-      \begin{hypothesis}[\textup{[H2]}, \cite{Beau2026q5a}]
+      \begin{hypothesis}[\textup{[H2]}, $Q5a$ version~2.0~\cite{Beau2026q5a}]
         \label{hyp:H2}
         For every $\psi \in \Schwartz$ and every $\varepsilon > 0$, there exists $q_0$ such that
         for all primes $q \geq q_0$,
@@ -105,7 +116,8 @@
         The convergence holds uniformly for $\psi$ in bounded subsets of $\Schwartz$.
       \end{hypothesis}
 
-      The present paper proves Hypothesis~\ref{hyp:H2}.
+      The present paper proves the statement of Hypothesis~\ref{hyp:H2}.
+      It discharges no hypothesis of the current $Q5a$.
 
     \subsection{Structure of the argument}
 
@@ -140,14 +152,18 @@
       merely a technical step in the proof of~[H2].
       It quantifies the defect between $\norm{\iotaq f}_{L^2}^2$ and $\norm{f}_{\ell^2}^2$
       with a constant that depends explicitly on Sobolev norms of $\psi$ but is independent of $q$.
-      This bound is the missing input for open problem $Q5a$-O5, which asks for the identification
-      of the effective metric constant
+      In $Q5a$ version~2.0, open problem $Q5a$-O5 asked for the identification of the effective
+      metric constant $A = \sum_{n \geq 1} \sigma^*(n)$ in terms of the Born--Infeld saturation
+      constant $c_{\mathrm{BI}}$.
+      The explicit expression
       \[
-        A = \sum_{n=1}^{\infty} \sigma^*(n) \approx \frac{c_{\mathrm{BI}}^2}{C_{\mathrm{Heis}}} \,
+        A \approx \frac{c_{\mathrm{BI}}^2}{C_{\mathrm{Heis}}} \,
         \zeta\!\left(\tfrac{\delta^*}{2}\right)
       \]
-      in terms of the Born--Infeld saturation constant $c_{\mathrm{BI}}$ (cf.~\cite{Beau2026w1},
-      formula~(9)).
+      is retained by W1~\cite{Beau2026w1} (Section~4.2) only as a proposal under a supplied global
+      power-law profile, saturation and normalisation; it is not a consequence of O25, $Q5a$ or U1.
+      An identification of $A$ would use a quasi-isometry bound of the present kind as one
+      ingredient; this paper supplies the bound, not the identification.
       We therefore state Corollary~\ref{cor:quasi-iso} as a numbered result.
 
     \subsection{Organisation}
@@ -203,7 +219,8 @@
         (\rho_q(X)f)(k) &:= e^{2\pi ik/q} f(k), \\
         (\rho_q(Y)f)(k) &:= f(k+1 \bmod q).
       \end{align*}
-      The \emph{rescaled generators} are defined as in~\cite{Beau2026q5a}:
+      The \emph{rescaled generators} are defined as in $Q5a$ version~2.0~\cite{Beau2026q5a}
+      (Definition~4.1 there):
       \[
         \Xhat := \frac{q}{2\pi i}\bigl(\rho_q(X) - I\bigr), \qquad
         \Phat := \frac{q}{2\pi i}\bigl(\rho_q(Y) - I\bigr).
@@ -360,14 +377,14 @@ The explicit dependence on $\mathcal{N}_2(\psi)$ comes from the $M = 2$ decay es
 applied to the $k = \pm 1$ dominant terms.
       \end{proof}
 
-      \begin{remark}[Reusability for $Q5a$-O5]
+      \begin{remark}[Reusability for an identification of $A$]
         \label{rem:reusability}
         The rate $O(q^{-1})$ in Corollary~\ref{cor:quasi-iso} is summable with respect to
-        the $\ell^2$-energy weights $\sigma^*(n)$ provided $\delta^*/2 > 1$,
-        a condition satisfied with large margin in the $O25$ numerical
-        campaign~\cite{Beau2026w1}.
-        This bound is therefore the quantitative input required for the identification
-        $A \approx c_{\mathrm{BI}}^2/C_{\mathrm{Heis}}$ in open problem $Q5a$-O5.
+        weights $\sigma^*(n) \propto n^{-\delta^*/2}$ provided $\delta^*/2 > 1$.
+        Such a global power-law profile is a supplied input, not an established
+        one~\cite{Beau2026w1}.
+        Under it, the bound is one quantitative ingredient that an identification of $A$ in terms
+        of $c_{\mathrm{BI}}$ would use; it does not supply that identification.
       \end{remark}
 
       \newpage
@@ -481,32 +498,32 @@ and both terms are bounded by $O(q^{-1})\norm{\partial_x^2\psi}_{L^2}$.
         \norm{\iotaq(\Phat\,\iotastar\psi) + i\partial_x\psi}_{L^2(\mathbb{R})} \xrightarrow{q \to \infty} 0.
       \]
       The convergence is uniform on bounded subsets of $\Schwartz$.
-      This establishes Hypothesis~\textup{[H2]} of~\cite{Beau2026q5a}.
+      This is the statement of hypothesis~\textup{[H2]} of $Q5a$ version~2.0~\cite{Beau2026q5a}.
     \end{theorem}
 
     \begin{proof}
       Immediate from Theorems~\ref{thm:position} and~\ref{thm:momentum}.
     \end{proof}
 
-    \begin{remark}[Consequence for $Q5a$ Theorem~7.1]
+    \begin{remark}[Relation to the large-$q$ theorem of $Q5a$ version~2.0]
       \label{rem:Q5a-consequence}
-      The hypotheses of~\cite{Beau2026q5a} Theorem~7.1 have mixed status:
-      [H-$\Pi$1], [H-$\Pi$2] are proved in the O-series;
-      [H-w] is proved in~\cite{Beau2026w1};
-      [H1] is established on the admissible low-frequency sector;
-      [H2] is established here.
-      The hypotheses [H-E1] and [C] are not established: the Q5a-O2 Fourier
-      analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale, and the
-      zero-form Mosco limit of the published admissibility form on the canonical Fourier
-      filtration, established by Q5a version 3.0~\cite{Beau2026q5a}, supersedes [C].
-      The representation-convergence part of the $Q5a$ limit therefore holds on the
-      admissible sector under [H1]--[H2]:
-      the discrete oscillator representation of $\Heis(\Zq)$ converges to the
-      metaplectic representation of $\Heis(\mathbb{R})$.
-      The form-convergence conclusion of Theorem~7.1 does not hold as stated: the published
-      admissibility forms have zero-form Mosco limit, and the existence of a normalisation
-      with non-trivial limit form $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,
-      \partial_x g\,dx$ is an open problem.
+      Theorem~7.1 of $Q5a$ version~2.0~\cite{Beau2026q5a} assumes [H-$\Pi$1], [H-$\Pi$2], [H2],
+      [H-w] and [H-E1], and its form-convergence part additionally assumes a spectral tightness
+      statement [C].
+      Theorem~\ref{thm:schwartz} proves the statement of [H2], which is the generator statement of
+      that theorem's representational part (T2).
+      It discharges no other hypothesis: [H-w] is open, W1~\cite{Beau2026w1} establishing no
+      proof of it; the Q5a-O2 Fourier analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the
+      $q^{-1}$ scale and supersedes [C]; and the status of [H-$\Pi$1] and [H-$\Pi$2] is not examined
+      here.
+      The form-convergence part (T3) is not available: the current $Q5a$ proves that the published
+      admissibility forms have zero-form Mosco limit on the canonical Fourier filtration
+      (\cite{Beau2026q5a}, Theorem~5.1), and under its depth and weight hypotheses no common
+      scalar normalisation yields a toric differential limit (\cite{Beau2026q5a}, Theorem~6.1);
+      a non-trivial limit form $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,
+      \partial_x g\,dx$ is therefore not obtained by that route.
+      The framework of $Q5a$ version~2.0 is not that of the current $Q5a$, and no hypothesis of the
+      current $Q5a$ is discharged here.
     \end{remark}
 
     \newpage
@@ -542,19 +559,18 @@ yields the result.
   \section{Conclusion}
     We have established the strong convergence of the rescaled Weil generators
     $\Xhat$ and $\Phat$ on $\Heis(\Zq)$ to the position and momentum operators
-    on $\ltwo$, thereby proving Hypothesis~[H2] of~\cite{Beau2026q5a}.
+    on $\ltwo$, thereby proving the statement formulated as hypothesis~[H2] in version~2.0
+    of~\cite{Beau2026q5a}.
     The proof isolates two structural ingredients: a discrete Sobolev identity,
     which controls the local finite-difference error at the $\ell^2$ level, and a
     quantitative aliasing estimate, which governs the passage from $\ell^2$ to
     $L^2$ with an explicit rate.
     Their combination yields, in particular, a quantitative quasi-isometry for the
-    sinc embedding with rate $O(q^{-1})$, whose role in the identification of the
-    effective metric constant $A$ in terms of $c_{\mathrm{BI}}$ is detailed in
-    Remark~\ref{rem:reusability}.
-    With [H2] established, the representation-convergence part of the large-$q$ limit
-    of~\cite{Beau2026q5a} (Theorem~\ref{thm:schwartz}) holds on the admissible sector;
-    the form-convergence part remains open, the published admissibility forms having
-    zero-form Mosco limit (Q5a version 3.0~\cite{Beau2026q5a};
+    sinc embedding with rate $O(q^{-1})$, whose possible use in an identification of the
+    effective metric constant $A$ is discussed in Remark~\ref{rem:reusability}.
+    In the framework of $Q5a$ version~2.0 this is the generator part of the large-$q$ limit.
+    It supplies no spatial limit operator: the current $Q5a$ proves that the published
+    admissibility forms have zero-form Mosco limit (\cite{Beau2026q5a}, Theorem~5.1;
     Remark~\ref{rem:Q5a-consequence}).
 
     \newpage
