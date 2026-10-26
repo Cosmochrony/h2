@@ -69,8 +69,9 @@
     The other hypotheses of that theorem are not discharged: the common weight hypothesis [H-w]
     is open~\cite{Beau2026w1}, and the Q5a-O2 Fourier analysis~\cite{Beau2026q5ao2} rules out
     [H-E1] at the $q^{-1}$ scale and supersedes [C].
-    The current $Q5a$ proves that the published admissibility form has zero-form Mosco limit on
-    the canonical filtration, so the present result supplies no spatial limit operator.
+    For uniformly bounded weights, the current $Q5a$ proves that the published admissibility form
+    has zero-form Mosco limit on the canonical filtration, so the present result supplies no
+    spatial limit operator.
   \end{abstract}
 
   \medskip
@@ -97,8 +98,8 @@
       [H-$\Pi$1], [H-$\Pi$2], [H2], [H-w] and [H-E1], together with a spectral tightness
       statement [C] for its form-convergence part.
       That framework is not the one of the current $Q5a$, which proves that the canonical
-      filtration is a Fourier window on which the published admissibility form has zero-form
-      Mosco limit (\cite{Beau2026q5a}, Theorems~3.1 and~5.1).
+      filtration is a Fourier window on which, for uniformly bounded weights, the published
+      admissibility form has zero-form Mosco limit (\cite{Beau2026q5a}, Theorems~3.1 and~5.1).
       Of the hypotheses of the version-2.0 theorem, the common weight hypothesis [H-w] is open,
       W1~\cite{Beau2026w1} establishing no proof of it, and the Q5a-O2 Fourier
       analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the $q^{-1}$ scale and supersedes [C].
@@ -152,16 +153,17 @@
       merely a technical step in the proof of~[H2].
       It quantifies the defect between $\norm{\iotaq f}_{L^2}^2$ and $\norm{f}_{\ell^2}^2$
       with a constant that depends explicitly on Sobolev norms of $\psi$ but is independent of $q$.
-      In $Q5a$ version~2.0, open problem $Q5a$-O5 asked for the identification of the effective
-      metric constant $A = \sum_{n \geq 1} \sigma^*(n)$ in terms of the Born--Infeld saturation
-      constant $c_{\mathrm{BI}}$.
-      The explicit expression
+      In $Q5a$ version~2.0, open problem $Q5a$-O5 asked to express the constant $A > 0$ of the limit
+      form $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,\partial_x g\,dx$ in terms of the
+      Born--Infeld saturation constant and the BFS combinatorial data of $G_q$.
+      Version~1 of W1 proposed the explicit expression
       \[
-        A \approx \frac{c_{\mathrm{BI}}^2}{C_{\mathrm{Heis}}} \,
-        \zeta\!\left(\tfrac{\delta^*}{2}\right)
+        A = \sum_{n \geq 1} \sigma^*(n) \approx \frac{c_{\mathrm{BI}}^2}{C_{\mathrm{Heis}}} \,
+        \zeta\!\left(\tfrac{\delta^*}{2}\right);
       \]
-      is retained by W1~\cite{Beau2026w1} (Section~4.2) only as a proposal under a supplied global
-      power-law profile, saturation and normalisation; it is not a consequence of O25, $Q5a$ or U1.
+      W1~\cite{Beau2026w1} retains it only as that proposal, under a supplied global power-law
+      profile, saturation and normalisation, and it is not a consequence of O25, $Q5a$ or U1
+      (W1, Section~4.2).
       An identification of $A$ would use a quasi-isometry bound of the present kind as one
       ingredient; this paper supplies the bound, not the identification.
       We therefore state Corollary~\ref{cor:quasi-iso} as a numbered result.
@@ -210,6 +212,10 @@
         $\iotaq \iotastar$ is approximately the identity on the low-frequency sector of $\ltwo$,
         consistently with the Nyquist--Shannon sampling theorem.
         The factor $q^{1/2}$ in Definition~\ref{def:sampling} is the adjoint normalisation.
+        $Q5a$ version~2.0 (Remark~3.2 there) writes the sinc interpolation without the factor
+        $q^{1/2}$ and describes it as an isometry onto the band-limited subspace; that isometry
+        requires the factor $q^{1/2}$ of Definition~\ref{def:sinc}, and hypothesis~[H2] is read
+        here with this normalisation, under which it is proved.
       \end{remark}
 
     \subsection{Weil generators and rescaled generators}
@@ -516,9 +522,9 @@ and both terms are bounded by $O(q^{-1})\norm{\partial_x^2\psi}_{L^2}$.
       proof of it; the Q5a-O2 Fourier analysis~\cite{Beau2026q5ao2} rules out [H-E1] at the
       $q^{-1}$ scale and supersedes [C]; and the status of [H-$\Pi$1] and [H-$\Pi$2] is not examined
       here.
-      The form-convergence part (T3) is not available: the current $Q5a$ proves that the published
-      admissibility forms have zero-form Mosco limit on the canonical Fourier filtration
-      (\cite{Beau2026q5a}, Theorem~5.1), and under its depth and weight hypotheses no common
+      The form-convergence part (T3) is not available: for uniformly bounded weights, the current
+      $Q5a$ proves that the published admissibility forms have zero-form Mosco limit on the
+      canonical Fourier filtration (\cite{Beau2026q5a}, Theorem~5.1), and under its depth and weight hypotheses no common
       scalar normalisation yields a toric differential limit (\cite{Beau2026q5a}, Theorem~6.1);
       a non-trivial limit form $\mathcal{E}(f,g) = A\int_{\mathbb{R}} \partial_x f\,
       \partial_x g\,dx$ is therefore not obtained by that route.
@@ -569,8 +575,9 @@ yields the result.
     sinc embedding with rate $O(q^{-1})$, whose possible use in an identification of the
     effective metric constant $A$ is discussed in Remark~\ref{rem:reusability}.
     In the framework of $Q5a$ version~2.0 this is the generator part of the large-$q$ limit.
-    It supplies no spatial limit operator: the current $Q5a$ proves that the published
-    admissibility forms have zero-form Mosco limit (\cite{Beau2026q5a}, Theorem~5.1;
+    It supplies no spatial limit operator: for uniformly bounded weights, the current $Q5a$ proves
+    that the published admissibility forms have zero-form Mosco limit (\cite{Beau2026q5a},
+    Theorem~5.1;
     Remark~\ref{rem:Q5a-consequence}).
 
     \newpage
