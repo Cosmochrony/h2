@@ -2,6 +2,7 @@
   "bib_key": "Beau2026h2",
   "web_url": "https://cosmochrony.org/science/emergent-geometry/h2/",
   "main_tex": "tex/h2.tex",
+  "notes": "Version 1.1 states the status of the result against the current Q5a. H2 proves the strong convergence of the rescaled Weil generators, the statement formulated as hypothesis [H2] (Hypothesis 4.3) in version 2.0 of Q5a, for the isometric sinc embedding. It discharges no hypothesis of the current Q5a and supplies no spatial limit operator: for uniformly bounded weights the current Q5a proves a zero-form Mosco limit. The weight hypothesis [H-w] is open, W1 establishing no proof of it, and the explicit expression for the constant A is a supplied-profile proposal of W1, not an established identification.",
   "zenodo_id": 19962051,
   "doi": "10.5281/zenodo.19962051"
 }
